@@ -16,7 +16,11 @@ public class UnitPlacer : MonoBehaviour
     private bool clickedUnit;
     private bool preparingUnit;
 
-    public Vector3 mousePos;
+    private Vector3 mousePos;
+
+    public Vector3 offset;
+
+
 
     private void Awake()
     {
@@ -30,7 +34,8 @@ public class UnitPlacer : MonoBehaviour
         {
             HandleInput();
             if(preparingUnit)
-            toPlace.transform.position = mousePos;
+                
+            toPlace.transform.position = mousePos + offset;
         }
       
     }
@@ -69,10 +74,14 @@ public class UnitPlacer : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && toPlace != null) 
         {
             UnitValidate validator = toPlace.GetComponent<UnitValidate>();
+            Unit unit = toPlace.GetComponent<Unit>();
             preparingUnit = false;
             if (validator != null && validator.hasValidPlacement) 
             {
-                validator.SetPlacementMode(PlacementMode.Fixed); 
+                validator.SetPlacementMode(PlacementMode.Fixed);
+                toPlace.transform.position += Vector3.up * offset.y;
+                unit.SetInitialPosY();
+                unit.StartFloating();
                 isPlacingUnit = false;
                 validator.setUnitOnGround = true;
                 toPlace = null;
@@ -89,9 +98,9 @@ public class UnitPlacer : MonoBehaviour
         }
     }
 
-    private void _PrepareUnit(Vector3 position)
+    private void _PrepareUnit(Vector3 _position)
     {
-        toPlace = Instantiate(unitPrefab, position, Quaternion.identity); // Tworzenie obiektu do umieszczenia na podstawie prefabrykatu jednostki
+        toPlace = Instantiate(unitPrefab, _position, Quaternion.identity); // Tworzenie obiektu do umieszczenia na podstawie prefabrykatu jednostki
         preparingUnit = true;
         UnitValidate validator = toPlace.GetComponent<UnitValidate>(); // Pobranie komponentu odpowiedzialnego za walidacjê jednostki
         if (validator != null)

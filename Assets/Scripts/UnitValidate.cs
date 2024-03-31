@@ -93,14 +93,14 @@ public class UnitValidate : MonoBehaviour
         }
     }
 
-    public void SetPlacementMode(PlacementMode mode)
+    public void SetPlacementMode(PlacementMode _mode)
     {
-        if (mode == PlacementMode.Fixed)
+        if (_mode == PlacementMode.Fixed)
         {
             isFixed = true;
             hasValidPlacement = true;
         }
-        else if (mode == PlacementMode.Valid)
+        else if (_mode == PlacementMode.Valid)
         {
             hasValidPlacement = true;
         }
@@ -108,19 +108,19 @@ public class UnitValidate : MonoBehaviour
         {
             hasValidPlacement = false;
         }
-        SetMaterial(mode);
+        SetMaterial(_mode);
     }
 
-    public void SetMaterial(PlacementMode mode)
+    public void SetMaterial(PlacementMode _mode)
     {
-        if (mode == PlacementMode.Fixed)
+        if (_mode == PlacementMode.Fixed)
         {
             foreach (MeshRenderer r in meshComponents)
                 r.sharedMaterials = initialMaterials[r].ToArray();
         }
         else
         {
-            Material matToApply = mode == PlacementMode.Valid
+            Material matToApply = _mode == PlacementMode.Valid
                 ? validPlacementMaterial : invalidPlacementMaterial;
 
             Material[] m; int nMaterials;
@@ -135,8 +135,8 @@ public class UnitValidate : MonoBehaviour
         }
     }
 
-    private bool _IsGround(GameObject o)
+    private bool _IsGround(GameObject _o)
     {
-        return ((1 << o.layer) & UnitPlacer.instance.groundLayerMask.value) != 0;
+        return ((1 << _o.layer) & UnitPlacer.instance.groundLayerMask.value) != 0;
     }
 }
