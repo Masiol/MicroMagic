@@ -57,11 +57,11 @@ public class Projectile : MonoBehaviour
                 health.TakeDamage(damage);
             }
             SpawnHitEffect(_other.ClosestPoint(transform.position), _other.transform);
-            Destroy(gameObject, 0.15f);
+            Destroy(gameObject);
         }
         else if (_other.CompareTag("Obstacle"))
         {
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.1f);
         }
     }
 

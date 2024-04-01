@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6769752079729560593}
   - component: {fileID: -2014615514468365415}
-  - component: {fileID: 9206952528984734806}
   - component: {fileID: 3731668151409284119}
   - component: {fileID: 9009152837415751476}
   - component: {fileID: 6796038852309851745}
   - component: {fileID: 664780061157454471}
+  - component: {fileID: 578637171265472990}
   m_Layer: 0
   m_Name: Virus 1
   m_TagString: Unit
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.33844, y: 9.53, z: -9.812941}
-  m_LocalScale: {x: 37.57816, y: 37.57816, z: 37.57816}
+  m_LocalScale: {x: 46.54431, y: 46.54431, z: 46.54431}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6681959538461792206}
@@ -60,27 +60,6 @@ MonoBehaviour:
   hasValidPlacement: 0
   isFixed: 0
   setUnitOnGround: 0
---- !u!65 &9206952528984734806
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66879273523600049}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.04, y: 0.04, z: 0.04}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3731668151409284119
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89,9 +68,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66879273523600049}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 100
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -102,12 +81,12 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &9009152837415751476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +109,9 @@ MonoBehaviour:
   floatEaseType: 7
   minDelay: 0
   maxDelay: 1
+  attackData: {fileID: 11400000, guid: 7a20f132e90ce474aa7e3de7b8dbd146, type: 2}
+  projectilePrefab: {fileID: 4534963860964584722, guid: fcf1ca75f2181174caccb2f23f34becd,
+    type: 3}
 --- !u!195 &6796038852309851745
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -151,7 +133,7 @@ NavMeshAgent:
   m_Height: 0.1
   m_BaseOffset: 0.035
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &664780061157454471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +148,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   healthUI: {fileID: 3877967318193408812}
+--- !u!64 &578637171265472990
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66879273523600049}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2381238399993666857, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
 --- !u!1 &2623690406601426907
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +256,6 @@ GameObject:
   - component: {fileID: 5736068326912661466}
   - component: {fileID: 5095750391588997020}
   - component: {fileID: 713691421030391089}
-  - component: {fileID: 1648806848401607920}
   m_Layer: 0
   m_Name: Viruse_1
   m_TagString: Untagged
@@ -325,28 +328,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1648806848401607920
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111608087431346440}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2381238399993666857, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
 --- !u!1 &6436031966849787713
 GameObject:
   m_ObjectHideFlags: 0

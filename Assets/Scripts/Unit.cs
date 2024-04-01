@@ -25,6 +25,10 @@ public class Unit : MonoBehaviour
     public float maxDelay = 1f;
 
     private Vector3 initialPosition;
+    public AttackData attackData;
+
+    public GameObject projectilePrefab;
+
 
     private void Start()
     {
@@ -62,7 +66,7 @@ public class Unit : MonoBehaviour
     private void StartUnitMoving()
     {
         gameStarted = true;
-        
+        agent.obstacleAvoidanceType = ObstacleAvoidanceType.GoodQualityObstacleAvoidance;
     }
 
     private void FindClosestEnemy()
@@ -143,17 +147,16 @@ public class Unit : MonoBehaviour
         Debug.Log("atak");
         if (target != null && target.gameObject.activeSelf)
         {
-            transform.DOScale(unitSO.scaleDuringAttack, unitSO.scaleSpeed).OnComplete(() =>
+            transform.DOScale(unitSO.maxScaleDuringAttack, unitSO.scaleSpeed).OnComplete(() =>
             {
                 // Po zakoñczeniu skalowania, wracamy do normalnej skali
-                transform.DOScale(27, unitSO.scaleSpeed);
+                transform.DOScale(unitSO.minScaleDuringAttack, unitSO.scaleSpeed);
 
                 // Instancjonowanie obiektu ataku
-                GameObject attackObject = Instantiate(unitSO.particleAttack, transform.position, Quaternion.identity);
-
-                // Ustawienie kierunku obiektu ataku na wroga
-                Vector3 direction = (target.position - transform.position).normalized;
-                attackObject.GetComponent<Projectile>().SetupObject(direction, targetTag, unitSO.damage);
+                if (attackData != null && target != null)
+                {
+                    attackData.Attack(transform, target, targetTag);
+                }
             });
         }
         else

@@ -7,6 +7,7 @@ TagManager:
   - Unit
   - Obstacle
   - EnemyUnit
+  - EnemySide
   layers:
   - Default
   - TransparentFX

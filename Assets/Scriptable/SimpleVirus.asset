@@ -15,9 +15,8 @@ MonoBehaviour:
   health: 100
   attackRange: 8
   damage: 10
-  moveSpeed: 7
-  scaleDuringAttack: 38
+  moveSpeed: 10
+  maxScaleDuringAttack: 60
+  minScaleDuringAttack: 46
   attackSpeed: 2
-  scaleSpeed: 1
-  particleAttack: {fileID: 4534963860964584722, guid: fcf1ca75f2181174caccb2f23f34becd,
-    type: 3}
+  scaleSpeed: 0.5
