@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -9,6 +10,8 @@ public class Projectile : MonoBehaviour
     public GameObject hitEffect;
     private float checkDelay = 0.25f;
     private float timer = 0f;
+
+    [SerializeField] private bool specjalAttack;
 
     private void Start()
     {
@@ -44,6 +47,7 @@ public class Projectile : MonoBehaviour
         direction = _dir;
         objectTag = _tag;
         damage = _damage;
+        Destroy(gameObject, 1.5f);
     }
 
     private void OnTriggerEnter(Collider _other)
@@ -54,9 +58,18 @@ public class Projectile : MonoBehaviour
             Health health = _other.GetComponent<Health>();
             if (health != null)
             {
-                health.TakeDamage(damage);
+                if(specjalAttack)
+                StartCoroutine(DoDamage(health));
+                else
+                    health.TakeDamage(damage);
             }
+            if(!specjalAttack)
             SpawnHitEffect(_other.ClosestPoint(transform.position), _other.transform);
+            else
+            {
+            SpawnHitEffect(_other.transform.position, _other.transform);
+            }
+                
             Destroy(gameObject);
         }
         else if (_other.CompareTag("Obstacle"))
@@ -67,12 +80,28 @@ public class Projectile : MonoBehaviour
 
     private void SpawnHitEffect(Vector3 hitPoint, Transform hitTransform)
     {
-        GameObject effect = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-
-        if (hitTransform != null)
+        if (!specjalAttack)
         {
-            effect.transform.up = hitTransform.up;
-            effect.transform.forward = hitTransform.forward;
+            GameObject effect = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+
+            if (hitTransform != null)
+            {
+                effect.transform.up = hitTransform.up;
+                effect.transform.forward = hitTransform.forward;
+            }
         }
+        else
+        {
+            //Vector3 hitPointOffset = new Vector3(hitTransform.position.x, hitTransform.position.y - 0.5f, hitTransform.position.z);
+            GameObject effect2 = Instantiate(hitEffect, new Vector3(hitPoint.x, 8.39f, hitPoint.z), Quaternion.identity);
+            effect2.transform.localScale = transform.localScale;
+        }
+
+    }
+
+    private IEnumerator DoDamage(Health health)
+    {
+        yield return new WaitForSeconds(1);
+        health.TakeDamage(damage);
     }
 }

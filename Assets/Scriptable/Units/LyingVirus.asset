@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33031954798ba2045bb0e2c0e6215076, type: 3}
+  m_Name: LyingVirus
+  m_EditorClassIdentifier: 
+  unitName: Necrocell
+  health: 100
+  attackRange: 13
+  damage: 10
+  moveSpeed: 5
+  maxScaleDuringAttack: 1.16
+  minScaleDuringAttack: 1
+  attackSpeed: 2.5
+  scaleSpeed: 1
+  commandPoints: 6
+  useParticleWhenAttack: 0
+  particlePrefab: {fileID: 2947726208527495106, guid: dfb6aa0dee732c640bf2a1acdb86cb9e,
+    type: 3}

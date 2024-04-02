@@ -20,7 +20,13 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            if(GetComponent<Unit>().isEnemyUnit)
+            {
+                GameManager.instance.UnregisterUnit(true, GetComponent<Unit>().unitSO.commandPoints);
+            }
+            else
+                GameManager.instance.UnregisterUnit(false, GetComponent<Unit>().unitSO.commandPoints);
+            Die();         
         }
     }
     void UpdateHealthUI()

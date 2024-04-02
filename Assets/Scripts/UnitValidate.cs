@@ -77,7 +77,7 @@ public class UnitValidate : MonoBehaviour
     {
         if (!setUnitOnGround)
         {
-            if (other.tag == "Obstacle" || other.tag == "Unit")
+            if (other.tag == "Obstacle" || other.tag == "Unit" || other.tag == "EnemySide")
             {
                 _nObstacles--;
                 if (_nObstacles == 0)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,7 +21,9 @@ public class UnitPlacer : MonoBehaviour
 
     public Vector3 offset;
 
+    public Unit currentSelectedUnit;
 
+    public static event Action<int, int> OnPlacedUnit;
 
     private void Awake()
     {
@@ -37,10 +40,12 @@ public class UnitPlacer : MonoBehaviour
                 
             toPlace.transform.position = mousePos + offset;
         }
+        RemoveUnitCheck();
       
     }
     public void SetUnitPrefab(GameObject _prefab)
     {
+        if (!GameManager.instance.CanPlaceNextUnit(_prefab.GetComponent<Unit>().unitSO.commandPoints)) return;
         unitPrefab = _prefab;
         isPlacingUnit = true;
         clickedUnit = true;
@@ -82,6 +87,7 @@ public class UnitPlacer : MonoBehaviour
                 toPlace.transform.position += Vector3.up * offset.y;
                 unit.SetInitialPosY();
                 unit.StartFloating();
+                OnPlacedUnit?.Invoke(1, unit.unitSO.commandPoints);
                 isPlacingUnit = false;
                 validator.setUnitOnGround = true;
                 toPlace = null;
@@ -95,6 +101,32 @@ public class UnitPlacer : MonoBehaviour
                 toPlace = null;
                 unitPrefab = null;
             }
+        }
+    }
+    private void RemoveUnitCheck()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            RaycastHit hitAfterPlace;
+            Ray rayAfterPlace = _mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(rayAfterPlace, out hitAfterPlace))
+            {
+                if (hitAfterPlace.collider.CompareTag("Unit") && hitAfterPlace.collider.GetComponent<UnitValidate>().setUnitOnGround)
+                {
+                    Debug.Log("unit");
+                    currentSelectedUnit = hitAfterPlace.collider.gameObject.GetComponent<Unit>();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Delete) && currentSelectedUnit != null)
+        {
+            OnPlacedUnit?.Invoke(-1, -currentSelectedUnit.GetComponent<Unit>().unitSO.commandPoints);
+            Destroy(currentSelectedUnit.gameObject);
+            isPlacingUnit = false;
+            toPlace = null;
+            unitPrefab = null;
+            currentSelectedUnit = null;
         }
     }
 
