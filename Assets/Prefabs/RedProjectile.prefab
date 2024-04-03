@@ -98,10 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bc96804c8cf80418d71370d9003c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 20
   hitEffect: {fileID: 8378648546881499446, guid: 867c572a5be680d42a042d2349f10143,
     type: 3}
   specjalAttack: 1
+  audioClips: []
+  audioOnHit: 0
+  sfxObject: {fileID: 6222528834465487503, guid: c735b1460aaba4648ab6cd08e6dc76ee,
+    type: 3}
 --- !u!65 &5527262727285721601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -110,10 +114,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3285950683891463300}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5886342, y: 0.49473736, z: 0.6084043}
+  m_Size: {x: 0.98, y: 0.7, z: 0.6084043}
   m_Center: {x: -0.003984183, y: 0.23171104, z: -0.0059119463}
 --- !u!96 &4074511154233606814
 TrailRenderer:

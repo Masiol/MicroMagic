@@ -101,6 +101,11 @@ MonoBehaviour:
   speed: 20
   hitEffect: {fileID: 468903730080557476, guid: 4a932c29739d6d4439fa35bdd35d3e9d,
     type: 3}
+  specjalAttack: 0
+  audioClips: []
+  audioOnHit: 1
+  sfxObject: {fileID: 2520438828499293679, guid: ae02ca37a2596314aa5a6d65fee78f86,
+    type: 3}
 --- !u!65 &2175707508424342741
 BoxCollider:
   m_ObjectHideFlags: 0

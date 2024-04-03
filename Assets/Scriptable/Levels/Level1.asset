@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   Level: 1
-  MaxCommandPoints: 15
+  MaxCommandPoints: 12

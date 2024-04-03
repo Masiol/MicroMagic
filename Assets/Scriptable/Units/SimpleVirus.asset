@@ -15,12 +15,12 @@ MonoBehaviour:
   unitName: 'Fibrax '
   health: 100
   attackRange: 8
-  damage: 20
+  damage: 16
   moveSpeed: 13
   maxScaleDuringAttack: 1.2
   minScaleDuringAttack: 1
-  attackSpeed: 1.25
-  scaleSpeed: 0.45
+  attackSpeed: 1.45
+  scaleSpeed: 0.75
   commandPoints: 4
   useParticleWhenAttack: 0
   particlePrefab: {fileID: 0}

@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33031954798ba2045bb0e2c0e6215076, type: 3}
   m_Name: BigVirus
   m_EditorClassIdentifier: 
-  unitName: 
-  health: 100
+  unitName: Malvira
+  health: 230
   attackRange: 5
-  damage: 10
-  moveSpeed: 5
-  maxScaleDuringAttack: 0
-  minScaleDuringAttack: 0
-  attackSpeed: 0
-  scaleSpeed: 0
-  commandPoints: 0
-  useParticleWhenAttack: 0
-  particlePrefab: {fileID: 0}
+  damage: 34
+  moveSpeed: 6
+  maxScaleDuringAttack: 1.12
+  minScaleDuringAttack: 1
+  attackSpeed: 2
+  scaleSpeed: 1
+  commandPoints: 8
+  useParticleWhenAttack: 1
+  particlePrefab: {fileID: 3932203844340884918, guid: 2cef9b18961e0f84ca55a3541a40d3ee,
+    type: 3}

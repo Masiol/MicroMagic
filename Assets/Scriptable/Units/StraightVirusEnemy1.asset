@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: StraightVirusEnemy1
   m_EditorClassIdentifier: 
   unitName: Parazon
-  health: 80
+  health: 35
   attackRange: 4
   damage: 5
   moveSpeed: 15
   maxScaleDuringAttack: 1.2
   minScaleDuringAttack: 1
-  attackSpeed: 0.5
-  scaleSpeed: 0.4
+  attackSpeed: 1
+  scaleSpeed: 1
   commandPoints: 2
   useParticleWhenAttack: 0
   particlePrefab: {fileID: 0}
