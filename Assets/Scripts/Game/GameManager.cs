@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
    
     private void Awake()
     {
+        currentEnemyUnits = 0;
         instance = this;
         UnitPlacer.OnPlacedUnit += RegisterUnit;
         uIController = gameObject.GetComponent<UIController>();

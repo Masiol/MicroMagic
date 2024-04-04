@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SimpleVirus
   m_EditorClassIdentifier: 
   unitName: 'Fibrax '
-  health: 100
+  health: 92
   attackRange: 8
   damage: 16
   moveSpeed: 13

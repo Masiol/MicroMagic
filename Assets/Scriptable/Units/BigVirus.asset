@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BigVirus
   m_EditorClassIdentifier: 
   unitName: Malvira
-  health: 230
+  health: 270
   attackRange: 5
-  damage: 34
-  moveSpeed: 6
+  damage: 38
+  moveSpeed: 5
   maxScaleDuringAttack: 1.12
   minScaleDuringAttack: 1
   attackSpeed: 2

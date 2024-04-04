@@ -19,6 +19,8 @@ public class LevelData : ScriptableObject
 
     public int CountEnemyUnits()
     {
+        CurrentEnemyCount = 0;
+        enemyUnits.Clear();
         GameObject[] enemyUnitObjects = GameObject.FindGameObjectsWithTag("EnemyUnit");
         foreach (GameObject enemyUnit in enemyUnitObjects)
         {
