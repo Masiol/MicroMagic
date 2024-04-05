@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.46169513, g: 0.5124164, b: 0.58993304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2077,6 +2077,17 @@ PrefabInstance:
       propertyPath: isEnemyUnit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2523412453721124534, guid: 4e3b358a8a87a5149980b42f3846948d,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 2371246814008520075, guid: 9d50c54ee78229d4590927081f547a43,
+        type: 3}
+    - target: {fileID: 3921747965320228943, guid: 4e3b358a8a87a5149980b42f3846948d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10c5af654cf5aac4ab4f3c8a54fcdefe, type: 2}
     - target: {fileID: 4404271706122754223, guid: 4e3b358a8a87a5149980b42f3846948d,
         type: 3}
       propertyPath: m_RootOrder
@@ -7571,6 +7582,7 @@ MonoBehaviour:
     type: 3}
   gameOverPanel: {fileID: 4398686149857072875, guid: cd09af233d2d6f844871077a3ca01b35,
     type: 3}
+  _gameCompletePanel: {fileID: 0}
 --- !u!114 &1802247529
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public RectTransform[] panelTransforms;
+    public Button startButton; 
     private AudioSource audioS;
-    public Button startButton;
-    // Start is called before the first frame update
 
     private void Start()
     {
@@ -19,13 +18,10 @@ public class MenuController : MonoBehaviour
     }
     public void StartCurrentLevel()
     {
-        // Pobierz referencjê do obiektu LevelManager
         LevelManager levelManager = FindObjectOfType<LevelManager>();
 
-        // SprawdŸ, czy uda³o siê znaleŸæ LevelManager
         if (levelManager != null)
         {
-            // Uruchom aktualn¹ scenê za pomoc¹ metody LoadNextLevel z LevelManagera
             levelManager.LoadNextLevel();
         }
         else

@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator DoDelayedDamage(int damage)
     {
-        yield return new WaitForSeconds(1f); // Czekaj 2 sekundy przed odebraniem obra¿eñ
+        yield return new WaitForSeconds(1f);
         currentHealth -= damage;
         if (currentHealth <= 0 && !isDeath)
         {

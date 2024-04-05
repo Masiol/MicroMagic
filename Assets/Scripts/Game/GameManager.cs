@@ -7,19 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {   
     public static GameManager instance;
-    
-    private UIController uIController;
-    private int maxCommandPoints;
-
-    [SerializeField] private LevelData level;
-    private int currentPlayerUnit;
-    public int currentEnemyUnits;
-    private int currentCommandPoints;
-
     public static event Action OnGameStart;
+    [HideInInspector] public int currentEnemyUnits;
+    [SerializeField] private LevelData level;
 
+    private UIController uIController;
+    private int maxCommandPoints;  
+    private int currentPlayerUnit;
+    private int currentCommandPoints;
     private bool startGame;
-
     private bool finishMap;
    
     private void Awake()
@@ -73,7 +69,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log("unregister enemy");
             uIController.UpdateEnemyUnit(1);
             currentEnemyUnits--;
             CheckEndGame();
@@ -111,10 +106,19 @@ public class GameManager : MonoBehaviour
         {           
             if (currentEnemyUnits == 0 && startGame)
             {
-                finishMap = true;
-                Debug.Log(currentEnemyUnits);
-                uIController.LevelComplete();
-                LevelManager.instance.CompleteLevel(level.level);
+                if (SceneManager.GetActiveScene().name != "Level4")
+                {
+                    finishMap = true;
+                    Debug.Log(currentEnemyUnits);
+                    uIController.LevelComplete();
+                    LevelManager.instance.CompleteLevel(level.level);
+                }
+                else
+                {
+                    finishMap = true;
+                    Debug.Log(currentEnemyUnits);
+                    uIController.GameComplete();
+                }
             }
             if (currentPlayerUnit == 0 && startGame)
             {

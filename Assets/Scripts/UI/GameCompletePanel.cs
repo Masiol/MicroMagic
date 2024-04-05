@@ -4,23 +4,21 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class LevelCompletePanel : MonoBehaviour
+public class GameCompletePanel : MonoBehaviour
 {
 
     [SerializeField] private Image background;
     [SerializeField] private RectTransform panelContent;
-    [SerializeField] private Button nextLevel;
     [SerializeField] private Button menuButton;
 
     private void Start()
     {
         menuButton.onClick.AddListener(GoToMenu);
-        nextLevel.onClick.AddListener(LoadLevel);
 
         transform.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-    
 
-    transform.DOScale(Vector3.one, 0.75f).SetEase(Ease.InQuad).OnComplete(() =>
+
+        transform.DOScale(Vector3.one, 0.75f).SetEase(Ease.InQuad).OnComplete(() =>
         {
             background.DOFade(0.75f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
             {
@@ -36,6 +34,7 @@ public class LevelCompletePanel : MonoBehaviour
 
     private void GoToMenu()
     {
+        LevelManager.instance.ResetGame();
         GameManager.instance.GoMenu();
     }
 

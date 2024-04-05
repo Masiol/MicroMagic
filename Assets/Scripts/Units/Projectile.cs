@@ -3,19 +3,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Vector3 direction;
     public float speed = 10f;
-    private string objectTag;
-    private int damage;
     public GameObject hitEffect;
-    private float checkDelay = 0.25f;
-    private float timer = 0f;
-
-    [SerializeField] private bool specjalAttack;
-    [SerializeField] private AudioClip[] audioClips;
-    private AudioSource audioSource;
+       
     [SerializeField] private bool audioOnHit;
+    [SerializeField] private bool specjalAttack;
+    [SerializeField] private AudioClip[] audioClips;    
     [SerializeField] private GameObject sfxObject;
+
+    private AudioSource audioSource;
+    private int damage;  
+    private float checkDelay = 0.25f;
+    private float timer = 0f; 
+    private Vector3 direction;
+    private string objectTag;
 
 
     private void Start()
@@ -63,10 +64,6 @@ public class Projectile : MonoBehaviour
         if (objectTag == null) return;
         if (_other.CompareTag(objectTag))
         {
-            if(audioOnHit)
-            {
-                //Instantiate(sfxObject, transform.position, Quaternion.identity);
-            }
             Health health = _other.GetComponent<Health>();
             if (health != null)
             {
@@ -102,7 +99,6 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            //Vector3 hitPointOffset = new Vector3(hitTransform.position.x, hitTransform.position.y - 0.5f, hitTransform.position.z);
             GameObject effect2 = Instantiate(hitEffect, new Vector3(hitPoint.x, 8.39f, hitPoint.z), Quaternion.identity);
             effect2.transform.localScale = transform.localScale;
         }

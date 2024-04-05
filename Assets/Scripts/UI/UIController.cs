@@ -7,10 +7,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    private GameManager gameManager;
-    private int currentCommandPoints;
-    private int currentEnemyUnits;
-    private int currentPlayerUnits;
+
 
     [SerializeField] private LevelData levelData;
 
@@ -38,9 +35,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private Transform gameCompletePanel;
     [SerializeField] private GameObject levelCompletePanel;
     [SerializeField] private GameObject gameOverPanel;
-
-
-
+    [SerializeField] private GameObject _gameCompletePanel; 
+    
+    private GameManager gameManager;
+    private int currentCommandPoints;
+    private int currentEnemyUnits;
+    private int currentPlayerUnits;
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -86,7 +86,6 @@ public class UIController : MonoBehaviour
         commandPointReachedAlert.color = new Color(commandPointReachedAlert.color.r, commandPointReachedAlert.color.g, commandPointReachedAlert.color.b, 0f); // Ustawienie przezroczystoœci na 0, aby rozpocz¹æ z efektem fade-in
         commandPointReachedAlert.DOFade(1f, 0.5f).OnComplete(() =>
         {
-            // Po zakoñczeniu efektu fade-in, rozpocznij efekt fade-out po czasie wyœwietlania
             commandPointReachedAlert.DOFade(0f, 0.5f).SetDelay(1);
         });
     }
@@ -109,9 +108,8 @@ public class UIController : MonoBehaviour
     {
         GameObject levelCompleteUI = Instantiate(levelCompletePanel);
         levelCompleteUI.transform.SetParent(gameCompletePanel);
-        levelCompleteUI.transform.localScale = Vector3.zero; // Ustawienie pocz¹tkowej skali na zero
+        levelCompleteUI.transform.localScale = Vector3.zero;
 
-        // Animacja skalowania do skali 1 za pomoc¹ DoTween
         levelCompleteUI.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InQuint);
     }
 
@@ -119,9 +117,17 @@ public class UIController : MonoBehaviour
     {
         GameObject gameOverUI = Instantiate(gameOverPanel);
         gameOverUI.transform.SetParent(gameCompletePanel);
-        gameOverUI.transform.localScale = Vector3.zero; // Ustawienie pocz¹tkowej skali na zero
+        gameOverUI.transform.localScale = Vector3.zero;
 
-        // Animacja skalowania do skali 1 za pomoc¹ DoTween
+        gameOverUI.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InQuint);
+    }
+
+    public void GameComplete()
+    {
+        GameObject gameOverUI = Instantiate(_gameCompletePanel);
+        gameOverUI.transform.SetParent(gameCompletePanel);
+        gameOverUI.transform.localScale = Vector3.zero;
+
         gameOverUI.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InQuint);
     }
 
